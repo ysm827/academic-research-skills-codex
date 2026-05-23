@@ -65,18 +65,22 @@ Install the skill from this repo path. Use `--method git` so public and
 credentialed GitHub access both work consistently:
 
 ```bash
-python "$HOME/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py" \
+python3 "$HOME/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py" \
   --repo Imbad0202/academic-research-skills-codex \
   --ref main \
   --path skills/academic-research-suite \
   --method git
 ```
 
+On macOS and many Linux systems, Python 3 is exposed as `python3` rather than
+`python`. If your system only has a `python` command and it is Python 3, use
+`python` in the commands instead.
+
 To update an existing install:
 
 ```bash
 rm -rf "$HOME/.codex/skills/academic-research-suite"
-python "$HOME/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py" \
+python3 "$HOME/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py" \
   --repo Imbad0202/academic-research-skills-codex \
   --ref main \
   --path skills/academic-research-suite \

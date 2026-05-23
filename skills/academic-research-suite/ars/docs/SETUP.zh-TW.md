@@ -10,18 +10,22 @@ Claude Code plugin 安裝指南。Claude Code 原生版本請使用
 存取行為都比較穩定：
 
 ```bash
-python "$HOME/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py" \
+python3 "$HOME/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py" \
   --repo Imbad0202/academic-research-skills-codex \
   --ref main \
   --path skills/academic-research-suite \
   --method git
 ```
 
+macOS 與許多 Linux 環境會把 Python 3 命令命名為 `python3`，而不是
+`python`。如果你的系統只有 `python`，且它確定是 Python 3，則可把下列
+指令中的 `python3` 改成 `python`。
+
 更新既有安裝：
 
 ```bash
 rm -rf "$HOME/.codex/skills/academic-research-suite"
-python "$HOME/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py" \
+python3 "$HOME/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py" \
   --repo Imbad0202/academic-research-skills-codex \
   --ref main \
   --path skills/academic-research-suite \
@@ -191,7 +195,7 @@ Material Passport reference adapters 使用 vendored `requirements-dev.txt`：
 
 ```bash
 cd skills/academic-research-suite/ars
-python -m pip install -r requirements-dev.txt
+python3 -m pip install -r requirements-dev.txt
 ```
 
 ## Material Passport `literature_corpus[]` adapters
@@ -204,17 +208,17 @@ python -m pip install -r requirements-dev.txt
 ```bash
 cd skills/academic-research-suite/ars
 
-python scripts/adapters/folder_scan.py \
+python3 scripts/adapters/folder_scan.py \
   --input /path/to/pdfs \
   --passport passport.yaml \
   --rejection-log rejection_log.yaml
 
-python scripts/adapters/zotero.py \
+python3 scripts/adapters/zotero.py \
   --input my-zotero-export.json \
   --passport passport.yaml \
   --rejection-log rejection_log.yaml
 
-python scripts/adapters/obsidian.py \
+python3 scripts/adapters/obsidian.py \
   --input ~/Obsidian/Lit\ Notes \
   --passport passport.yaml \
   --rejection-log rejection_log.yaml
@@ -261,9 +265,9 @@ Codex 本身已提供主要 OpenAI model。
 從 Codex repo root 執行：
 
 ```bash
-python -m json.tool skills/academic-research-suite/manifest.json
-python skills/academic-research-suite/ars/scripts/check_data_access_level.py --path skills/academic-research-suite/ars
-python skills/academic-research-suite/ars/scripts/check_task_type.py --path skills/academic-research-suite/ars
+python3 -m json.tool skills/academic-research-suite/manifest.json
+python3 skills/academic-research-suite/ars/scripts/check_data_access_level.py --path skills/academic-research-suite/ars
+python3 skills/academic-research-suite/ars/scripts/check_task_type.py --path skills/academic-research-suite/ars
 ```
 
 Upstream pytest 請從 vendored ARS root 執行，因為測試會 import
@@ -271,7 +275,7 @@ Upstream pytest 請從 vendored ARS root 執行，因為測試會 import
 
 ```bash
 cd skills/academic-research-suite/ars
-python -m pytest --tb=short -q
+python3 -m pytest --tb=short -q
 ```
 
 Codex package 已在可行處補 nested path lookup。第一次 vendor、但本 repo Git

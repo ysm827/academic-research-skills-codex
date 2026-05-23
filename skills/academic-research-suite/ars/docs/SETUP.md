@@ -11,18 +11,22 @@ Install the single Codex skill. Use `--method git` so public and credentialed
 GitHub access both behave consistently:
 
 ```bash
-python "$HOME/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py" \
+python3 "$HOME/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py" \
   --repo Imbad0202/academic-research-skills-codex \
   --ref main \
   --path skills/academic-research-suite \
   --method git
 ```
 
+On macOS and many Linux systems, Python 3 is exposed as `python3` rather than
+`python`. If your system only has a `python` command and it is Python 3, use
+`python` in the commands instead.
+
 To update an existing install:
 
 ```bash
 rm -rf "$HOME/.codex/skills/academic-research-suite"
-python "$HOME/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py" \
+python3 "$HOME/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py" \
   --repo Imbad0202/academic-research-skills-codex \
   --ref main \
   --path skills/academic-research-suite \
@@ -201,7 +205,7 @@ The reference Material Passport adapters use Python packages from the vendored
 
 ```bash
 cd skills/academic-research-suite/ars
-python -m pip install -r requirements-dev.txt
+python3 -m pip install -r requirements-dev.txt
 ```
 
 ## Material Passport `literature_corpus[]` Adapters
@@ -214,17 +218,17 @@ From the vendored ARS root:
 ```bash
 cd skills/academic-research-suite/ars
 
-python scripts/adapters/folder_scan.py \
+python3 scripts/adapters/folder_scan.py \
   --input /path/to/pdfs \
   --passport passport.yaml \
   --rejection-log rejection_log.yaml
 
-python scripts/adapters/zotero.py \
+python3 scripts/adapters/zotero.py \
   --input my-zotero-export.json \
   --passport passport.yaml \
   --rejection-log rejection_log.yaml
 
-python scripts/adapters/obsidian.py \
+python3 scripts/adapters/obsidian.py \
   --input ~/Obsidian/Lit\ Notes \
   --passport passport.yaml \
   --rejection-log rejection_log.yaml
@@ -271,9 +275,9 @@ review; Codex itself already supplies the primary OpenAI model.
 Run these from the Codex repo root:
 
 ```bash
-python -m json.tool skills/academic-research-suite/manifest.json
-python skills/academic-research-suite/ars/scripts/check_data_access_level.py --path skills/academic-research-suite/ars
-python skills/academic-research-suite/ars/scripts/check_task_type.py --path skills/academic-research-suite/ars
+python3 -m json.tool skills/academic-research-suite/manifest.json
+python3 skills/academic-research-suite/ars/scripts/check_data_access_level.py --path skills/academic-research-suite/ars
+python3 skills/academic-research-suite/ars/scripts/check_task_type.py --path skills/academic-research-suite/ars
 ```
 
 Run upstream pytest suites from the vendored ARS root because the tests import
@@ -281,7 +285,7 @@ Run upstream pytest suites from the vendored ARS root because the tests import
 
 ```bash
 cd skills/academic-research-suite/ars
-python -m pytest --tb=short -q
+python3 -m pytest --tb=short -q
 ```
 
 The Codex package patches nested path lookup where practical. For first-time
